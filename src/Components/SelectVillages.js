@@ -2,18 +2,19 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import ShowVillage from './ShowVillage'
+import NewVillage from "./NewVillage";
 
 const SelectVillages = () => {
 
-    const [dataList, setDataList] = useState([]);
+    const [dataListe, setDataListe] = useState([]);
     const [dataVillage, setDataVillage] = useState([]);
 
     useEffect(() => {
 
         async function fetchData() {
 
-            const url1 = await axios('http://localhost:8080/Village');
-            setDataList(url1.data)
+            const url = await axios('http://localhost:8080/Village');
+            setDataListe(url.data)
         }
 
         fetchData();
@@ -26,16 +27,23 @@ const SelectVillages = () => {
 
             <select name="village" id="village-select">
 
-                {dataList.map((current) => (
+                {dataListe.map((current) => (
 
-                    <option key={current.id} value={current.id} onClick = {() => setDataVillage(current)}>{current.name}</option>
+                    <option key={current.id} value={current.id}
+                            onClick = {() => setDataVillage(current)}>{current.name}</option>
 
                 ))}
             </select>
 
+            <div>
+            <NewVillage/>
+            </div>
+
             <ShowVillage village = {dataVillage} />
 
-            {/*  {dataVillage.map((current) => (
+
+
+            {/*   {dataVillage.map((current) => (
             <dd className=" card-text" key={current.id}>{current.id} - {current.name}&nbsp;{current.postCode}</dd>
         ))}*/}
         </div>

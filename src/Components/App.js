@@ -1,4 +1,6 @@
 import SelectVillages from './SelectVillages'
+import NewVillage from './NewVillage'
+import React from "react";
 
 const App = () => {
 
@@ -7,6 +9,7 @@ const App = () => {
     return (
         <div>
             <SelectVillages/>
+
         </div>
 )
 }
