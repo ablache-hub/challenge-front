@@ -4,31 +4,59 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 const NewVillage =() => {
 
+    const [formData, updateFormData] = React.useState([]);
 
-    useEffect(() => {
-        // POST request using axios inside useEffect React hook
+    const handleChange = (event) => {
+        updateFormData({
+            ...formData,
+
+            // Trimming any whitespace
+            [event.target.name]: event.target.value.trim()
+        });
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        axios.post('http://localhost:8080/Village', formData)
+    };
+
+    const handleUpdate = (event) => {
+        event.preventDefault()
+        axios.put('http://localhost:8080/Village', formData)
+    };
+
+    const handleDelete = (event) => {
+        event.preventDefault()
+        axios.delete('http://localhost:8080/Village/'+ formData.id)
+    };
+
+ /*   useEffect(() => {
         const village = { name: 'Village POST REACT',
             postCode: 44300};
         axios.post('http://localhost:8080/Village', village)
-            // .then(response => setArticleId(response.data.id));
-
-// empty dependency array means this effect will only run once (like componentDidMount in classes)
-    }, []);
+        // .then(response => setArticleId(response.data.id));
+    }, []);*/
 
     return (<>
-        <form action="" method="get" className="ajout-village">
-            <div className="form-example">
-                <label htmlFor="name">Entrez le nom: </label>
-                <input type="text" name="name" id="name" required />
-            </div>
-            <div className="form-example">
-                <label htmlFor="email">Enter your email: </label>
-                <input type="email" name="email" id="email" required />
-            </div>
-            <div className="form-example">
-                <input type="submit" value="Subscribe!" />
-            </div>
-        </form>
+
+            <label>
+                Id (uniquement pour UPDATE/DELETE)
+                <input name="id" onChange={handleChange} />
+            </label>
+            <label>
+                Village
+                <input name="name" onChange={handleChange} />
+            </label>
+            <br />
+            <label>
+                Code Postal
+                <input name="postCode" type ="number" onChange={handleChange} />
+            </label>
+            <br />
+            <button onClick={handleSubmit}>Ajouter</button>
+            <button onClick={handleUpdate}>Update</button>
+            <button onClick={handleDelete}>Delete</button>
+
 
         </>
     )

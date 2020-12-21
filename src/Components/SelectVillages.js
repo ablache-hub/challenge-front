@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import ShowVillage from './ShowVillage'
+import NewVillage from "./NewVillage";
 
 const SelectVillages = () => {
 
@@ -28,14 +29,21 @@ const SelectVillages = () => {
 
                 {dataListe.map((current) => (
 
-                    <option key={current.id} value={current.id} onClick = {() => setDataVillage(current)}>{current.name}</option>
+                    <option key={current.id} value={current.id}
+                            onClick = {() => setDataVillage(current)}>{current.name}</option>
 
                 ))}
             </select>
 
+            <div>
+            <NewVillage/>
+            </div>
+
             <ShowVillage village = {dataVillage} />
 
-            {/*  {dataVillage.map((current) => (
+
+
+            {/*   {dataVillage.map((current) => (
             <dd className=" card-text" key={current.id}>{current.id} - {current.name}&nbsp;{current.postCode}</dd>
         ))}*/}
         </div>
