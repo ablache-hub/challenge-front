@@ -5,15 +5,15 @@ import ShowVillage from './ShowVillage'
 
 const SelectVillages = () => {
 
-    const [dataList, setDataList] = useState([]);
+    const [dataListe, setDataListe] = useState([]);
     const [dataVillage, setDataVillage] = useState([]);
 
     useEffect(() => {
 
         async function fetchData() {
 
-            const url1 = await axios('http://localhost:8080/Village');
-            setDataList(url1.data)
+            const url = await axios('http://localhost:8080/Village');
+            setDataListe(url.data)
         }
 
         fetchData();
@@ -26,7 +26,7 @@ const SelectVillages = () => {
 
             <select name="village" id="village-select">
 
-                {dataList.map((current) => (
+                {dataListe.map((current) => (
 
                     <option key={current.id} value={current.id} onClick = {() => setDataVillage(current)}>{current.name}</option>
 
