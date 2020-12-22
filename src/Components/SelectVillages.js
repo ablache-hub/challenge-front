@@ -22,22 +22,24 @@ const SelectVillages = () => {
 
 
     return (
-        <div>
+
+        //Creation d'une liste, les données récupérées y sont injectées avec un mapping
+        <div align="center">
             <label htmlFor="village-select">Choisissez un village: </label>
 
             <select name="village" id="village-select">
 
                 {dataListe.map((current) => (
 
-                    <option key={current.id} value={current.id}
-                            onClick = {() => setDataVillage(current)}>{current.name}</option>
+                    <option key={current.id} value={current.name}
+                            //Au clique, le state est transmis à "ShowVillage"
+                            onClick = {() => setDataVillage(current)}>{current.name}
+                    </option>
 
                 ))}
             </select>
 
-            <div>
-            <NewVillage/>
-            </div>
+            <NewVillage village = {dataVillage} />
 
             <ShowVillage village = {dataVillage} />
 
