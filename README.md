@@ -27,3 +27,6 @@
     - Problême: Blocage sur la gestion des PUT/UPDATE/DELETE pendant toute l'après-midi de lundi , à force de recherche et d'essai j'ai bricolé une solution qui semble fonctionner.
 
 
+* Au 22/12: Le formulaire CRUD pour le village fonctionne, il faut juste rafraichir la page après chaque requête pour voir les modifs
+    * Je n'aurai sûrement pas le temps de m'occuper de la gestion des shows/villages, votes etc
+    * Ni du design

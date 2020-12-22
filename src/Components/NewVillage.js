@@ -4,19 +4,21 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 const NewVillage =({village}) => {
 
+    //Hooks states pour le formulaire et la fonction show/hide
     const [formData, updateFormData] = React.useState([]);
     const [showingState, setShowingState] = React.useState();
 
 
+    //Sauvegarde des données du formulaire
     const handleChange = (event) => {
         updateFormData({
             ...formData,
 
-            // Trimming any whitespace
             [event.target.name]: event.target.value.trim()
         });
     };
 
+    //Fonctions CRUD
     const handleSubmit = (event) => {
         event.preventDefault()
         axios.post('http://localhost:8080/Village', formData)
@@ -42,6 +44,7 @@ const NewVillage =({village}) => {
     return (
         <div>
 
+            {/*Boutons RADIO pour l'affichage/masquage des forms/boutons*/}
             <div>
                 <input id='toggle add' name='choix' type='radio' value='toggle add' checked onClick={() => setShowingState("add")}/>
                 <label htmlFor="toggle add ">
@@ -59,6 +62,8 @@ const NewVillage =({village}) => {
                 </label>
             </div>
 
+
+            {/*Les actions sur forms sont gérées par "onChange" qui appelle la fonction "handleChange()"*/}
             {showingState === "delete" || showingState === "add" ? null :
                 <label>
                     Id (uniquement pour UPDATE/DELETE)
@@ -84,6 +89,8 @@ const NewVillage =({village}) => {
 
             <br/>
 
+
+            {/*Boutons qui lancent les fonctions CRUD au clique*/}
             {showingState === "delete" || showingState === "update" ? null :
                 <button onClick={handleSubmit}>Ajouter</button>
             }

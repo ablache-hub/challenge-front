@@ -6,9 +6,12 @@ import NewVillage from "./NewVillage";
 
 const SelectVillages = () => {
 
+
     const [dataListe, setDataListe] = useState([]);
     const [dataVillage, setDataVillage] = useState([]);
 
+
+    // Fetch des données village
     useEffect(() => {
 
         async function fetchData() {
@@ -23,7 +26,7 @@ const SelectVillages = () => {
 
     return (
 
-        //Creation d'une liste, les données récupérées y sont injectées avec un mapping
+        //Creation d'une liste, les données récupérées y sont injectées avec un mapping du hook/state
         <div align="center">
             <label htmlFor="village-select">Choisissez un village: </label>
 
@@ -39,6 +42,7 @@ const SelectVillages = () => {
                 ))}
             </select>
 
+            {/*Les compo NewVillage et ShowVillage sont appelés avec le hook/state en props du village selectionné*/}
             <NewVillage village = {dataVillage} />
 
             <ShowVillage village = {dataVillage} />
