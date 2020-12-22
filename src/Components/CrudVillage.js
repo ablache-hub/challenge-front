@@ -2,11 +2,11 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-const NewVillage =({village}) => {
+const CrudVillage =({village}) => {
 
     //Hooks states pour le formulaire et la fonction show/hide
     const [formData, updateFormData] = React.useState([]);
-    const [showingState, setShowingState] = React.useState();
+    const [showingState, setShowingState] = React.useState('add');
 
 
     //Sauvegarde des données du formulaire
@@ -42,11 +42,11 @@ const NewVillage =({village}) => {
        }, []);*/
 
     return (
-        <div>
+        <>
 
             {/*Boutons RADIO pour l'affichage/masquage des forms/boutons*/}
             <div>
-                <input id='toggle add' name='choix' type='radio' value='toggle add' checked onClick={() => setShowingState("add")}/>
+                <input id='toggle add' name='choix' type='radio' value='toggle add' onClick={() => setShowingState("add")}/>
                 <label htmlFor="toggle add ">
                     Add
                 </label>
@@ -66,7 +66,7 @@ const NewVillage =({village}) => {
             {/*Les actions sur forms sont gérées par "onChange" qui appelle la fonction "handleChange()"*/}
             {showingState === "delete" || showingState === "add" ? null :
                 <label>
-                    Id (uniquement pour UPDATE/DELETE)
+                    Id&nbsp;
                     <input name="id" onChange={handleChange}/>
                 </label>
             }
@@ -92,21 +92,21 @@ const NewVillage =({village}) => {
 
             {/*Boutons qui lancent les fonctions CRUD au clique*/}
             {showingState === "delete" || showingState === "update" ? null :
-                <button onClick={handleSubmit}>Ajouter</button>
+                <button type="button" className="btn btn-primary" onClick={handleSubmit}>Ajouter</button>
             }
 
             {showingState === "delete" ||showingState === "add" ? null :
-                <button onClick={handleUpdate}>Update</button>
+                <button type="button" className="btn btn-primary" onClick={handleUpdate}>Update</button>
             }
 
             {showingState === "update" || showingState === "add" ? null :
 
-                <button onClick={handleDelete}>Delete</button>
+                <button type="button" className="btn btn-primary" onClick={handleDelete}>Delete</button>
             }
 
-        </div>
+        </>
     )
 
 }
 
-export  default NewVillage;
+export  default CrudVillage;

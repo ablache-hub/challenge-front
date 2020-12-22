@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import ShowVillage from './ShowVillage'
-import NewVillage from "./NewVillage";
+import CrudVillage from "./CrudVillage";
 
 const SelectVillages = () => {
 
@@ -28,7 +28,7 @@ const SelectVillages = () => {
 
         //Creation d'une liste, les données récupérées y sont injectées avec un mapping du hook/state
         <div align="center">
-            <label htmlFor="village-select">Choisissez un village: </label>
+            <label htmlFor="village-select mb-5">Choisissez un village: </label>
 
             <select name="village" id="village-select">
 
@@ -43,7 +43,7 @@ const SelectVillages = () => {
             </select>
 
             {/*Les compo NewVillage et ShowVillage sont appelés avec le hook/state en props du village selectionné*/}
-            <NewVillage village = {dataVillage} />
+            <CrudVillage village = {dataVillage} />
 
             <ShowVillage village = {dataVillage} />
 
