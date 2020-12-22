@@ -5,8 +5,8 @@
 ### Techos utilisées
 
 * JS/React
-* Axios
-* Bootstrap
+* Axios pour la gestion simplifiée des fetch/requêtes
+* Bootstrap pour le design
 
 ### Déroulement
 
@@ -21,7 +21,10 @@
 * Les données sont envoyées dans une liste déroulante qui affiche plus de détails au clique (pour les villages)    
    * Problême: Je n'arrive pas à updater cette liste automatiquement à chaque requête CRUD (il faut rafraichir la page à la main)   
    Solution: Redux? (Surement pas le temps de m'y pencher)  
-        
+         
+
+* On peut Ajouter/Updater/Supprimer des villages à l'aide d'un formulaire associé à des boutons
+  
 
 * Focus sur la gestion requêtes CRUD en priorité (avant le design etc)
     - Problême: Blocage sur la gestion des PUT/UPDATE/DELETE pendant toute l'après-midi de lundi , à force de recherche et d'essai j'ai bricolé une solution qui semble fonctionner.
